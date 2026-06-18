@@ -3,7 +3,7 @@
 class BadCalculator:
     def __init__(self, root):
         self.root = root
-        self.root.title("Калькулятор")
+        self.root.title("Калькулятор з сайту")
         self.root.geometry("300x400")
         self.root.configure(bg="#00FF00")
         self.result_var = tk.StringVar(value="0")
