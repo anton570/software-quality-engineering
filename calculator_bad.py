@@ -24,14 +24,20 @@ class BadCalculator:
         for i in range(4):
             self.button_frame.grid_columnconfigure(i, weight=1)
             self.button_frame.grid_rowconfigure(i, weight=1)
+
     def on_button_click(self, char):
         current_text = self.result_var.get()
         if char == 'C':
             self.result_var.set("0")
         elif char == '=':
             try:
+                # Перевіряємо, чи є спроба ділення на нуль перед обчисленням
+                if "/0" in current_text:
+                    raise ZeroDivisionError
                 result = eval(current_text) - 1
                 self.result_var.set(str(result))
+            except ZeroDivisionError:
+                self.result_var.set("Zero Dev")
             except:
                 self.result_var.set("Error")
         else:
